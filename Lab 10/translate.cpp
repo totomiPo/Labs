@@ -7,15 +7,6 @@
 
 using namespace std;
 
-/*
-По символьным файлам с текстом (содержащим сокращения) и с сокращениями создать новый файл,
-где все сокращения заменены на соответствующие слова.
-ДОП:
-- составление списка замен в отдельный файл(строка, позиция, сокращение, которое было заменено)
-- возможность подключить несколько словарей
-*/
-
-
 typedef struct {
     char* word;
     char* reduced;
@@ -67,9 +58,9 @@ Token** readAllTokens(const char** patchs, int size, size_t* newSize) {
     size_t tIdx = 0, tSize = 10;
     Token** tokens = new Token * [tSize];
 
-    for (int i = 0; i < size; i++) {//----------------
-        ifstream in;//----------------
-        in.open(patchs[i]);//----------------
+    for (int i = 0; i < size; i++) {
+        ifstream in;
+        in.open(patchs[i]);
 
         if (in.is_open())
         {
@@ -88,7 +79,7 @@ Token** readAllTokens(const char** patchs, int size, size_t* newSize) {
         in.close();
     }
 
-    *newSize = tIdx; // обновляем кол-во возможных сокращений 
+    *newSize = tIdx;
     return tokens;
 }
 
@@ -120,9 +111,9 @@ char** replaceWords(int row, ofstream& log, char* line, size_t* newSize, Token**
             words = expandWords(words, wSize, &wSize);
         }
         words[wIdx++] = changeIfReduced(pch, tokens, size);
-        // слово поменялось
+        // Г±Г«Г®ГўГ® ГЇГ®Г¬ГҐГ­ГїГ«Г®Г±Гј
         if (pch != words[wIdx - 1]) {
-            log << "строка: " << row + 1 << " позиция: " << pos << " замена: " << pch << '-' << words[wIdx - 1] << endl;
+            log << "Г±ГІГ°Г®ГЄГ : " << row + 1 << " ГЇГ®Г§ГЁГ¶ГЁГї: " << pos << " Г§Г Г¬ГҐГ­Г : " << pch << '-' << words[wIdx - 1] << endl;
         }
         pch = strtok(nullptr, " \t");
         pos++;
