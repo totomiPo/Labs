@@ -4,5 +4,5 @@
 using namespace std;
 #include <iostream>
 
-unsigned long long bci(int n, int m); // расчет коэффициентов
+unsigned long long bci(int n, int m); 
 #endif 
