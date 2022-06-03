@@ -1,9 +1,5 @@
 #include "lab8.h"
 
-/*Рекурсивно описать функцию C(n, m) вычисления биномиального коэффициента по следующей формуле:
-C(n, 0) = C(n, n) = 1;  C(n, m) = C(n - 1, m) + C(n - 1, m - 1) при 0 < m < n. 
-Написать тестирующую программу к ней.*/
-
 int main() 
 {
 	cout << "Hello. Calculation of the binomial coefficient C(n, m)" << '\n';
